@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:NavigatorContent xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					xmlns:s="library://ns.adobe.com/flex/spark" 
+					xmlns:mx="library://ns.adobe.com/flex/mx" width="380" height="290">
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	<fx:Metadata>
+		[Event(name="costChanged", type="flash.events.Event")]
+	</fx:Metadata>
+	<fx:Script>
+		<![CDATA[
+			import spark.components.Label;
+			import spark.components.TextInput;
+			import spark.events.TextOperationEvent;
+			[Bindable]public var title:String;
+			private var detailsChanged:Boolean;
+			private var _details:Array;
+			
+			public function setDetails(value:Array):void
+			{
+				_details = value;
+				detailsChanged = true;
+				invalidateProperties();
+			}
+			
+			override protected function commitProperties():void
+			{
+				super.commitProperties();
+				if(detailsChanged)
+				{
+					detailsChanged = false;
+					for each(var key:String in _details)
+					{
+						var di:DailyDetailItem = new DailyDetailItem();
+						di.detailName = key;
+						di.cost.addEventListener(TextOperationEvent.CHANGE,onChange);
+						panel.addElement(di);
+					}					
+				}
+			}
+			
+			protected function onChange(evt:TextOperationEvent):void
+			{
+				var tNum:Number = 0;
+				for(var i:int=0;i<panel.numElements;i++)
+				{
+					var di:DailyDetailItem = panel.getElementAt(i) as DailyDetailItem;
+					var num:Number = Number(di.cost.text);
+					tNum += num;
+				}
+				total.text = tNum+"";
+				
+				dispatchEvent(new Event("costChanged"));
+			}
+			
+			public function getDetail():String
+			{
+				var str:String = "";
+				for(var i:int=0;i<panel.numElements;i++)
+				{
+					var di:DailyDetailItem = panel.getElementAt(i) as DailyDetailItem;
+					var num:Number = Number(di.cost.text);
+					str += di.detailName+":"+num+",";
+				}
+				return str;
+			}
+		]]>
+	</fx:Script>
+	<s:Panel id="panel" styleName="accountPanel" width="100%" height="100%" title="{title}">
+		<s:layout>
+			<s:VerticalLayout horizontalAlign="center" verticalAlign="middle"/>
+		</s:layout>	
+	</s:Panel>
+	<s:HGroup top="10" left="100" width="100%">
+		<s:Label id="total" text="0" fontSize="16"/>
+		<s:Label text="￥"/>
+	</s:HGroup>
+</s:NavigatorContent>

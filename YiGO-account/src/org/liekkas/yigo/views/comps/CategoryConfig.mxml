@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:fx="http://ns.adobe.com/mxml/2009" label="账单类型设置" 
+								xmlns:s="library://ns.adobe.com/flex/spark" verticalGap="10" 
+								xmlns:mx="library://ns.adobe.com/flex/mx" horizontalAlign="center" 
+								width="100%" height="100%" xmlns:textinput="org.liekkas.comps.textinput.*">
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			import mx.utils.StringUtil;
+			
+			import org.liekkas.utils.ZArray;
+			
+			import spark.components.Label;
+			
+			private var existType:Array = [];
+			
+			public function initData(value:Array):void
+			{
+				for each(var obj:Object in value)
+				{
+					var ccr:CategoryConfigRow = new CategoryConfigRow();
+					ccr.addEventListener("removeRow",onRemoveRow);
+					ccr.title = obj['type'];
+					ccr.categorys = obj['values'];
+					existType.push(obj['type']);
+					this.addElement(ccr);
+				}
+			}
+			
+			protected function button1_clickHandler(event:MouseEvent):void
+			{
+				var type:String = StringUtil.trim(pti.text);
+				if(type=="")
+				{
+					Alert.show("请输入账单大类:");
+					return;
+				}
+				if(ZArray.contains(existType,type))
+				{
+					Alert.show("该大类已存在！");
+					return;
+				}
+				var ccr:CategoryConfigRow = new CategoryConfigRow();
+				ccr.callLater(function():void{ccr.addItem()});
+				ccr.addEventListener("removeRow",onRemoveRow);
+				ccr.title = type;
+				existType.push(type);
+				this.addElement(ccr);	
+				
+				pti.text = "";
+			}
+			
+			protected function onRemoveRow(evt:Event):void
+			{
+				var ccr:CategoryConfigRow = evt.target as CategoryConfigRow; 
+				this.removeElement(ccr);
+				ZArray.removeItem(existType,ccr.title);
+			}
+			
+			public function getAllConfig():XML
+			{
+				var xml:XML = new XML("<categorys></categorys>");
+				
+				for(var i:int=2;i<this.numElements;i++)
+				{
+					var ccr:CategoryConfigRow = this.getChildAt(i) as CategoryConfigRow;
+					xml.appendChild(ccr.getRowInfo());
+				}
+				return xml;
+			}
+		]]>
+	</fx:Script>
+	<s:Spacer height="10"/>
+	<mx:HBox width="90%">
+		<textinput:PromptingTextInput prompt="请输入账单大类:" id="pti"/>
+		<s:Button label="新增" click="button1_clickHandler(event)"/>
+		<s:Spacer width="100%"/>
+		<s:Button id="saveBtn" label="保存"/>
+	</mx:HBox>
+	
+</mx:VBox>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Panel xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="70%" height="70%"
+		 creationComplete="focusManager.setFocus(password)">
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	<fx:Metadata>
+		[Event(name="success", type="flash.events.Event")]
+	</fx:Metadata>
+	<s:layout>
+		<s:VerticalLayout horizontalAlign="center" verticalAlign="middle"/>
+	</s:layout>
+	<s:states>
+		<s:State name="login"/>
+		<s:State name="register"/>
+	</s:states>
+	<fx:Script>
+		<![CDATA[
+			import mx.events.CloseEvent;
+			import mx.controls.Alert;
+			
+			import org.liekkas.yigo.utils.EncryptionUtil;
+
+			/**
+			 * 数据库文件
+			 * */
+			private var _databaseFile:File;
+
+			public var sqlConnection:SQLConnection;
+
+			public function set databaseFile(value:File):void
+			{
+				_databaseFile = value;
+				this.currentState = _databaseFile.exists ? "login" : "register";
+				trace("dd");
+			}
+
+			/**
+			 * 打开数据库
+			 * */
+			private function openDatabase():void
+			{
+				if(this.currentState == "register" && password.text != passwordVerify.text)
+				{
+					statusMessage.text = "两次密码不一致！请重新输入密码！";
+					return;
+				}
+				
+				var encryptionKey:ByteArray = EncryptionUtil.getEncryptionKey(_databaseFile,password.text);
+				
+				try
+				{
+					sqlConnection = new SQLConnection();
+					sqlConnection.addEventListener(SQLEvent.OPEN, 
+						function(event:SQLEvent):void
+						{
+							dispatchEvent(event);	
+						});
+					sqlConnection.open(_databaseFile, SQLMode.CREATE, false, 1024, encryptionKey);
+					dispatchEvent(new Event("success"));
+				}
+				catch (error:SQLError)
+				{
+					if (error.errorID == 3138)
+					{
+						statusMessage.text = "密码错误，请重新输入！";
+					}
+					else
+					{
+						statusMessage.text = "不能打开数据库：" + error.message;
+					}
+				}		
+			}
+			
+			private function initializeDatabase():void
+			{
+				Alert.show("重置数据库会把以前的数据全部删掉，请做好备份！确定重置？","提示:",Alert.OK|Alert.NO,this,
+					function(evt:CloseEvent):void
+					{
+						if(evt.detail == Alert.OK)
+						{
+							_databaseFile.deleteFile();
+							currentState = "register";
+						}
+					});
+			}
+		]]>
+	</fx:Script>
+	<mx:Text id="blurbR" includeIn="register" width="90%" textAlign="center">
+		<mx:text>欢迎您使用YiGO记账本，为保护您的数据，初次使用时请对数据库进行加密！以后登录会要求输入密码请牢记密码！
+		</mx:text>
+	</mx:Text>
+	<mx:Text id="blurbL" includeIn="login" width="90%" textAlign="center">
+		<mx:text>欢迎您使用YiGO记账本，数据库已加密请输入密码进入！
+		</mx:text>
+	</mx:Text>
+	<s:Form>
+		<s:FormItem label="请输入密码:">
+			<s:TextInput id="password" displayAsPassword="true" enter="openDatabase()"/>
+		</s:FormItem>
+		<s:FormItem includeIn="register" label="请重复输入密码:">
+			<s:TextInput id="passwordVerify" displayAsPassword="true" enter="openDatabase()"/>
+		</s:FormItem>
+	</s:Form>
+	<mx:Text id="statusMessage" width="90%" height="35" color="red" textAlign="center"/>
+
+	<s:Spacer height="100"/>
+	<s:HGroup>
+		<mx:Button id="exportButton" includeIn="login" label="备份数据库" click="initializeDatabase()"/>
+		<mx:Button id="importButton" includeIn="login" label="导入数据库" click="initializeDatabase()"/>
+		<mx:Button id="initButton" includeIn="login" label="重置数据库" click="initializeDatabase()"/>	
+	</s:HGroup>
+	
+</s:Panel>

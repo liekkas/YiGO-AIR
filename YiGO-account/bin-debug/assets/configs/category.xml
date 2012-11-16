@@ -1,0 +1,14 @@
+<categorys>
+	<category name="吃喝">
+		<kind name="早餐"/>
+		<kind name="午餐"/>
+		<kind name="晚餐"/>
+	</category>
+	<category name="交通">
+		<kind name="公交"/>
+		<kind name="火车"/>
+		<kind name="汽车"/>
+	</category>
+	<category name="人际">
+	</category>
+</categorys>

@@ -1,0 +1,41 @@
+/* CSS file */
+@namespace s "library://ns.adobe.com/flex/spark";
+@namespace mx "library://ns.adobe.com/flex/mx";
+
+s|ButtonBar{
+	skinClass:ClassReference("assets.styles.green.skin.Z_ButtonBarSkin");
+}
+
+.mainPanel{
+	skinClass:ClassReference("assets.styles.green.skin.Z_PanelSkin");
+}
+
+.controlBtn{
+	fontFamily:"微软雅黑";
+	fontSize:18;
+	color:#336699;
+}
+
+/**记账旋转面板*/
+.accountPanel{
+	borderStyle: solid;
+	borderColor: #9bb8cc;
+	
+	cornerRadius:0;
+	backgroundAlpha: 0.7;
+	backgroundColor: #003366;
+	dropShadowEnabled: false;
+	padding-bottom:0;
+	padding-left:0;
+	padding-right:0;
+	padding-top:0;
+	border-thickness-bottom:4;
+	border-thickness-left:4;
+	border-thickness-right:4;
+	border-thickness-top:4;
+	border-thickness:1;
+}
+
+
+
+

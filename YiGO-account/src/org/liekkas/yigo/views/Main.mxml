@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:VGroup xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" gap="-1"
+		 width="100%" height="100%" 
+		 xmlns:containers="com.dougmccune.containers.*" 
+		 xmlns:views="org.liekkas.yigo.views.*">
+	<fx:Script>
+		<![CDATA[
+			import mx.controls.Alert;
+			import mx.events.IndexChangedEvent;
+			
+			import org.liekkas.yigo.common.ImageAssets;
+			
+			import spark.events.IndexChangeEvent;
+			
+			protected function buttonbar1_changeHandler(event:IndexChangeEvent):void
+			{
+				vs.selectedIndex = event.newIndex;
+			}
+			
+		]]>
+	</fx:Script>
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	<s:ButtonBar width="100%" height="50"
+				 change="buttonbar1_changeHandler(event)" selectedIndex="0"
+				 >
+		<s:ArrayList>
+			<fx:Object label="记账" icon="{ImageAssets.DOCKMENU_INFO}"/>
+			<fx:Object label="查询" icon="{ImageAssets.DOCKMENU_STREAM}"/>
+			<fx:Object label="图表" icon="{ImageAssets.DOCKMENU_CHART}"/>
+		</s:ArrayList>
+	</s:ButtonBar>
+	<mx:ViewStack id="vs" width="100%" height="100%">
+		<s:NavigatorContent  width="100%" height="100%">
+			<views:DailyCharge/>
+		</s:NavigatorContent>
+		<s:NavigatorContent width="100%" height="100%">
+			<views:SearchView />	
+		</s:NavigatorContent>
+		<s:NavigatorContent width="100%" height="100%">
+			<views:InfoConfig/>
+		</s:NavigatorContent>
+	</mx:ViewStack>
+</s:VGroup>

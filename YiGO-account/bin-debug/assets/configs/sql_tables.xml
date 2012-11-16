@@ -1,0 +1,15 @@
+<sql>
+	<statement>
+		CREATE TABLE IF NOT EXISTS T_ACCOUNT (
+			id INTEGER PRIMARY KEY,
+			category VARCHAR(20),
+			cost NUMERIC,
+			total NUMERIC,
+			remark TEXT,
+			detail TEXT,
+			date VARCHAR(10),
+			year VARCHAR(4),
+			month VARCHAR(2)
+		)	
+	</statement>
+</sql>

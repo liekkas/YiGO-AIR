@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Panel xmlns:fx="http://ns.adobe.com/mxml/2009" styleName="mainPanel"
+		 xmlns:s="library://ns.adobe.com/flex/spark" title="查询"
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%" 
+		 xmlns:ns="http://www.amcharts.com/com_internal" xmlns:chart="org.chart.*" xmlns:comps="org.liekkas.yigo.views.comps.*">
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	<mx:Accordion width="100%" height="100%">
+		<comps:AccountOverview id="accountOverview"/>
+		<comps:SearchDailyCost id="searchDailyCost"/>
+		<comps:TopN id="topn"/>
+	</mx:Accordion>
+</s:Panel>

@@ -1,0 +1,114 @@
+<mockup version="1.0" skin="sketch" fontFace="Balsamiq Sans" measuredW="2474" measuredH="638" mockupW="2444" mockupH="600">
+  <controls>
+    <control controlID="6" controlTypeID="com.balsamiq.mockups::TitleWindow" x="31" y="38" w="800" h="600" measuredW="450" measuredH="400" zOrder="0" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bottomheight>0</bottomheight>
+        <close>true</close>
+        <dragger>false</dragger>
+        <maximizeRestore>true</maximizeRestore>
+        <minimize>true</minimize>
+        <text>YiGO%u8BB0%u8D26%u672C</text>
+      </controlProperties>
+    </control>
+    <control controlID="7" controlTypeID="com.balsamiq.mockups::ButtonBar" x="30" y="66" w="800" h="82" measuredW="234" measuredH="41" zOrder="1" locked="false" isInGroup="-1">
+      <controlProperties>
+        <selectedIndex>1</selectedIndex>
+        <size>24</size>
+        <text>%u8BB0%u8D26%2C%u67E5%u8BE2%2C%u914D%u7F6E</text>
+      </controlProperties>
+    </control>
+    <control controlID="11" controlTypeID="com.balsamiq.mockups::Accordion" x="34" y="142" w="797" h="496" measuredW="150" measuredH="162" zOrder="2" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%u8D26%u5355%u6982%u89C8%0A%u6BCF%u65E5%u6D88%u8D39%0ATOPN</text>
+      </controlProperties>
+    </control>
+    <control controlID="13" controlTypeID="com.balsamiq.mockups::ColumnChart" x="75" y="218" w="696" h="292" measuredW="187" measuredH="175" zOrder="3" locked="false" isInGroup="-1"/>
+    <control controlID="14" controlTypeID="com.balsamiq.mockups::Tooltip" x="334" y="177" w="472" h="41" measuredW="427" measuredH="0" zOrder="4" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%u9996%u5148%u6309%u5E74%uFF0C%u7136%u540E%u6309%u6708%uFF0C%u7136%u540E%u5929%uFF0C%u4F9D%u6B21%u8FDB%u884C%u94BB%u53D6%uFF0C%u53EA%u6BD4%u8F83%u5927%u7C7B%u6D88%u8D39</text>
+        <tooltipDirection>SW</tooltipDirection>
+      </controlProperties>
+    </control>
+    <control controlID="16" controlTypeID="com.balsamiq.mockups::TitleWindow" x="856" y="38" w="800" h="600" measuredW="450" measuredH="400" zOrder="5" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bottomheight>0</bottomheight>
+        <close>true</close>
+        <dragger>false</dragger>
+        <maximizeRestore>true</maximizeRestore>
+        <minimize>true</minimize>
+        <text>YiGO%u8BB0%u8D26%u672C</text>
+      </controlProperties>
+    </control>
+    <control controlID="17" controlTypeID="com.balsamiq.mockups::ButtonBar" x="855" y="66" w="800" h="82" measuredW="234" measuredH="41" zOrder="6" locked="false" isInGroup="-1">
+      <controlProperties>
+        <selectedIndex>1</selectedIndex>
+        <size>24</size>
+        <text>%u8BB0%u8D26%2C%u67E5%u8BE2%2C%u914D%u7F6E</text>
+      </controlProperties>
+    </control>
+    <control controlID="18" controlTypeID="com.balsamiq.mockups::Accordion" x="859" y="142" w="797" h="496" measuredW="150" measuredH="162" zOrder="7" locked="false" isInGroup="-1">
+      <controlProperties>
+        <selectedIndex>1</selectedIndex>
+        <text>%u8D26%u5355%u6982%u89C8%0A%u6BCF%u65E5%u6D88%u8D39%0ATOPN</text>
+      </controlProperties>
+    </control>
+    <control controlID="20" controlTypeID="com.balsamiq.mockups::Tooltip" x="1153" y="223" w="472" h="41" measuredW="359" measuredH="0" zOrder="8" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%u70B9%u51FB%u65E5%u5386%uFF0C%u53EF%u4EE5%u67E5%u8BE2%u90A3%u5929%u7684%u6D88%u8D39%u60C5%u51B5%uFF0C%u53EF%u4EE5%u8003%u8651%u7EC6%u5206</text>
+        <tooltipDirection>SW</tooltipDirection>
+      </controlProperties>
+    </control>
+    <control controlID="22" controlTypeID="com.balsamiq.mockups::TitleWindow" x="1674" y="38" w="800" h="600" measuredW="450" measuredH="400" zOrder="9" locked="false" isInGroup="-1">
+      <controlProperties>
+        <bottomheight>0</bottomheight>
+        <close>true</close>
+        <dragger>false</dragger>
+        <maximizeRestore>true</maximizeRestore>
+        <minimize>true</minimize>
+        <text>YiGO%u8BB0%u8D26%u672C</text>
+      </controlProperties>
+    </control>
+    <control controlID="23" controlTypeID="com.balsamiq.mockups::ButtonBar" x="1673" y="66" w="800" h="82" measuredW="234" measuredH="41" zOrder="10" locked="false" isInGroup="-1">
+      <controlProperties>
+        <selectedIndex>1</selectedIndex>
+        <size>24</size>
+        <text>%u8BB0%u8D26%2C%u67E5%u8BE2%2C%u914D%u7F6E</text>
+      </controlProperties>
+    </control>
+    <control controlID="24" controlTypeID="com.balsamiq.mockups::Accordion" x="1677" y="142" w="797" h="496" measuredW="150" measuredH="162" zOrder="11" locked="false" isInGroup="-1">
+      <controlProperties>
+        <selectedIndex>2</selectedIndex>
+        <text>%u8D26%u5355%u6982%u89C8%0A%u6BCF%u65E5%u6D88%u8D39%0ATOPN</text>
+      </controlProperties>
+    </control>
+    <control controlID="25" controlTypeID="com.balsamiq.mockups::ColumnChart" x="2120" y="295" w="339" h="312" measuredW="187" measuredH="175" zOrder="12" locked="false" isInGroup="-1"/>
+    <control controlID="26" controlTypeID="com.balsamiq.mockups::Tooltip" x="2151" y="235" w="308" h="60" measuredW="414" measuredH="0" zOrder="13" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%u53EF%u4EE5%u67E5%u8BE2%u5230%u6CA1%u79CD%u7C7B%u578B%u7684%u6D88%u8D39%u6700%u9AD8%u7684%u54EA%u51E0%u5929%uFF0C%u6D88%u8D39%u6700%u4F4E%u7684%u54EA%u51E0%u5929</text>
+        <tooltipDirection>SW</tooltipDirection>
+      </controlProperties>
+    </control>
+    <control controlID="28" controlTypeID="com.balsamiq.mockups::PieChart" x="1128" y="295" w="383" h="254" measuredW="180" measuredH="180" zOrder="14" locked="false" isInGroup="-1"/>
+    <control controlID="29" controlTypeID="com.balsamiq.mockups::Calendar" x="877" y="208" w="205" h="178" measuredW="96" measuredH="96" zOrder="15" locked="false" isInGroup="-1"/>
+    <control controlID="30" controlTypeID="com.balsamiq.mockups::ComboBox" x="1709" y="235" w="73" h="-1" measuredW="46" measuredH="26" zOrder="16" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%u5403</text>
+      </controlProperties>
+    </control>
+    <control controlID="31" controlTypeID="com.balsamiq.mockups::ComboBox" x="1798" y="235" w="84" h="-1" measuredW="60" measuredH="26" zOrder="17" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%u65E9%u9910</text>
+      </controlProperties>
+    </control>
+    <control controlID="32" controlTypeID="com.balsamiq.mockups::ComboBox" x="1897" y="235" w="80" h="-1" measuredW="67" measuredH="26" zOrder="18" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%u524D5%u5929</text>
+      </controlProperties>
+    </control>
+    <control controlID="33" controlTypeID="com.balsamiq.mockups::DataGrid" x="1702" y="295" w="403" h="312" measuredW="221" measuredH="176" zOrder="19" locked="false" isInGroup="-1">
+      <controlProperties>
+        <text>%u65E5%u671F%20%5E%2C%20%u7C7B%u522B%2C%20%u6D88%u8D39%2C%u5907%u6CE8%0A2012-11-10%2C%u65E9%u9910%2C45%uFFE5%0A2012-10-10%2C%u65E9%u9910%2C43%uFFE5%0A2012-11-11%2C%u65E9%u9910%2C42%uFFE5%0A2012-12-10%2C%u65E9%u9910%2C41%uFFE5%0A2012-12-13%2C%u65E9%u9910%2C40%uFFE5</text>
+      </controlProperties>
+    </control>
+  </controls>
+</mockup>

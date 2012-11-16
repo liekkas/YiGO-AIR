@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:WindowedApplication xmlns:fx="http://ns.adobe.com/mxml/2009" 
+					   xmlns:s="library://ns.adobe.com/flex/spark" 
+					   xmlns:views="org.liekkas.yigo.account.views.*"
+					   showStatusBar="false" xmlns:account="org.liekkas.yigo.*">
+	<fx:Style source="assets/styles/green.css"/>
+	<fx:Declarations>
+		<account:AccountContext contextView="{this}"/>
+	</fx:Declarations>
+	<s:layout>
+		<s:VerticalLayout horizontalAlign="center" verticalAlign="middle"/>
+	</s:layout> 
+</s:WindowedApplication>

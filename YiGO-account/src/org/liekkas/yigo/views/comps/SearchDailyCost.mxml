@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:fx="http://ns.adobe.com/mxml/2009" label="每日消费" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%"
+		 xmlns:ns="http://www.amcharts.com/com_internal" xmlns:chart="org.chart.*">
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import flash.filters.DropShadowFilter;
+			
+			[Bindable]public var chartData:Array;
+			[Bindable]
+			private var shadow:DropShadowFilter = new DropShadowFilter(2,45,0,0.5);
+			
+		]]>
+	</fx:Script>
+	<ns:AmLegend dataProvider="{pie}"/>
+	<chart:AmPieChart
+		id="pie"
+		width="100%"
+		height="100%"
+		dataProvider="{chartData}"
+		valueField="cost"
+		titleField="category"
+		angle="5"
+		depth3D="5"
+		innerRadius="10"
+		groupPercent="3"
+		groupedTitle="其他"
+		gradient="radial"
+		filters="{[shadow]}"
+		startDuration="1.5"
+		startRadius="100"
+		marginLeft="0"
+		marginRight="0"
+		labelWidth="100"
+		labelsEnabled="false"
+		>
+		<chart:balloon>
+			<ns:AmBalloon cornerRadius="10" borderThickness="2" borderColor="#FFFFFF" borderAlpha="1"/>                
+		</chart:balloon>
+		
+	</chart:AmPieChart>
+</mx:VBox>

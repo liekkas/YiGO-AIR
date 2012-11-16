@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:VBox xmlns:fx="http://ns.adobe.com/mxml/2009" label="TOPN" 
+		 xmlns:s="library://ns.adobe.com/flex/spark" 
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%"
+		 xmlns:ns="http://www.amcharts.com/com_internal" xmlns:chart="org.chart.*">
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	<fx:Script>
+		<![CDATA[
+			import flash.filters.DropShadowFilter;
+			
+			[Bindable]public var chartData:Array;
+			[Bindable]
+			private var shadow:DropShadowFilter = new DropShadowFilter(2,45,0,0.5);
+			
+		]]>
+	</fx:Script>
+	<ns:AmLegend dataProvider="{pie}"/>
+	<chart:AmSerialChart 
+		id="pie"
+		width="100%"
+		height="100%"
+		dataProvider="{chartData}"
+		categoryField="year"
+		startDuration="1"
+		angle="5"
+		depth3D="5"
+		filters="{[shadow]}"
+		marginLeft="0"
+		marginRight="0"
+		plotAreaFillAlphas="[0]"
+		>
+		<chart:balloon>
+			<ns:AmBalloon cornerRadius="10" borderThickness="2" borderColor="#FFFFFF" borderAlpha="1"/>                
+		</chart:balloon>
+		<chart:categoryAxis>
+			<ns:CategoryAxis autoTruncate="true" autoGridCount="true" gridAlpha="0" axisThickness="2" axisAlpha=".9" axisColor="0xffffff"/>
+		</chart:categoryAxis>
+		<!--<chart:graphs>
+		<ns:AmGraph id="totalAG" title="个数" valueAxis="{v1}" valueField="cost" type="column" bullet="round" hideBulletsCount="30"
+		balloonText="{'【[[category]]】消费 : [[value]]￥'}" fillColors="[0x0AA0F7]" fillAlphas="[0.9]" lineColor="0x7DF44A"/>                        
+		</chart:graphs>-->
+		<chart:valueAxes>
+			<ns:ValueAxis id="v1" axisColor="#0AA0F7" axisThickness="2"/>                    
+		</chart:valueAxes>
+
+	</chart:AmSerialChart>
+</mx:VBox>

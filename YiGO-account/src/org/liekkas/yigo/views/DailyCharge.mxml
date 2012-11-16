@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Panel xmlns:fx="http://ns.adobe.com/mxml/2009" styleName="mainPanel" 
+		 xmlns:s="library://ns.adobe.com/flex/spark"
+		 xmlns:mx="library://ns.adobe.com/flex/mx" width="100%" height="100%" xmlns:containers="com.dougmccune.containers.*">
+	<fx:Declarations>
+		<s:RadioButtonGroup id="rbg" change="rbg_changeHandler(event)"/>
+	</fx:Declarations>
+	<s:states>
+		<s:State name="hasValue"/>
+		<s:State name="noValue"/>
+	</s:states>
+	<fx:Script>
+		<![CDATA[
+			import flash.utils.getTimer;
+			
+			import mx.events.IndexChangedEvent;
+			
+			import org.liekkas.utils.ZDate;
+			import org.liekkas.yigo.models.vos.AccountVO;
+			import org.liekkas.yigo.views.comps.DailyDetailPanel;
+			
+			import spark.components.NavigatorContent;
+			import spark.components.RadioButton;
+			
+			private var dict:Object;
+			public function setCategory(value:Array):void
+			{
+				dict = new Object();
+				container.removeAllElements();
+				hg.removeAllElements();
+				total.text = "";
+				
+				if(value==null || value.length==0) {
+					this.currentState = "noValue";
+					return;
+				}
+				this.currentState = "hasValue";
+				var initIdex:int =  Math.floor((value.length-1)*.5);
+				
+				for(var i:int=0;i<value.length;i++)
+				{
+					var o:Object = value[i];
+					var ddp:DailyDetailPanel = new DailyDetailPanel();
+					ddp.title = o['type'];
+					ddp.setDetails(o['values']);
+					ddp.addEventListener("costChanged",onCostChanged);
+					container.addElement(ddp);
+					
+					var rb:RadioButton = new RadioButton();
+					rb.toolTip = o['type'];
+					rb.group = rbg;
+					hg.addElement(rb);
+					
+					dict[rb.toolTip] = i;
+					dict[i] = rb;
+					if(i==initIdex)
+					{
+						container.selectedIndex = i; 
+						rb.selected = true;			
+					}
+				}
+			}
+			
+			protected function rbg_changeHandler(event:Event):void
+			{
+				container.selectedIndex = dict[rbg.selection.toolTip];
+			}
+			
+			protected function container_changeHandler(event:IndexChangedEvent):void
+			{
+				rbg.selection = dict[container.selectedIndex];
+			}
+			
+			protected function onCostChanged(evt:Event):void
+			{
+				var tNum:Number = 0;
+				for(var i:int=0;i<container.numElements;i++)
+				{
+					var ddp:DailyDetailPanel = container.getElementAt(i) as DailyDetailPanel;
+					var num:Number = Number(ddp.total.text);
+					tNum += num;
+				}
+				total.text = tNum+"";
+			}
+			
+			public function getAccounts():Array
+			{
+				var result:Array = [];
+				var now:String = ZDate.getDateStr(new Date(),"YYYY-MM-DD");
+				for(var i:int=0;i<container.numElements;i++)
+				{
+					var account:AccountVO = new AccountVO();
+					var ddp:DailyDetailPanel = container.getElementAt(i) as DailyDetailPanel;
+					var num:Number = Number(ddp.total.text);
+					account.id = getTimer()+i;
+					account.category = ddp.title;
+					account.cost = num;
+					account.detail = ddp.getDetail();
+					account.remark = "";
+					account.total = Number(total.text);
+					account.date = now;
+					account.year = now.substr(0,4);
+					account.month = now.substr(5,2);
+					result[i] = account;
+				}
+				return result;
+			}
+		]]>
+	</fx:Script>
+	<s:HGroup width="100%" horizontalAlign="center" includeIn="hasValue">
+		<s:Label id="total" fontSize="24" fontWeight="bold"/>
+		<s:Button id="saveBtn" label="保存"/>
+	</s:HGroup>
+	
+	<containers:CoverFlowContainer id="container" width="100%" height="100%" includeIn="hasValue"
+								   change="container_changeHandler(event)">
+	</containers:CoverFlowContainer>
+	<s:HGroup id="hg" bottom="10" horizontalCenter="0" includeIn="hasValue">
+	</s:HGroup>
+	<s:Label text="还没有设置账单类型，请到设置里配置！" includeIn="noValue"/>
+</s:Panel>
